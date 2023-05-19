@@ -1,0 +1,21 @@
+<div class="without-error" *ngIf="data$ | asyncWithStatus as data">
+  <div *ngIf="data.isLoading" class="loading">Loading...</div>
+  <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
+  <div *ngIf="!data.isLoading && !data.error" class="loaded">
+    {{ data.value?.title }}
+  </div>
+</div>
+<div class="with-error" *ngIf="(dataWithError$ | asyncWithStatus) as data">
+  <div *ngIf="data.isLoading" class="loading">Loading...</div>
+  <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
+  <div *ngIf="!data.isLoading && !data.error" class="loaded">
+    {{ data.value?.title }}
+  </div>
+</div>
+<div class="stream" *ngIf="(stream$ | asyncWithStatus) as data">
+  <div *ngIf="data.isLoading" class="loading">Loading...</div>
+  <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
+  <div *ngIf="!data.isLoading && !data.error" class="loaded">
+    {{ data.value }}
+  </div>
+</div>

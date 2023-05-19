@@ -1,0 +1,30 @@
+{
+  "name": "ngx-async-with-status",
+  "version": "0.0.1",
+  "author": "Emre Baskan",
+  "email": "emrebaskan@mail.com",
+  "peerDependencies": {
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "description": "Async pipe with status for Angular",
+  "keywords": [
+    "ng2",
+    "ngx",
+    "angular",
+    "angular2",
+    "typescript",
+    "angular async pipe with status",
+    "angular async pipe alternative",
+    "angular async pipe",
+    "angular async pipe loading state",
+    "angular async pipe loading status",
+    "angular async pipe error state",
+    "angular async pipe error status"
+  ]
+}
