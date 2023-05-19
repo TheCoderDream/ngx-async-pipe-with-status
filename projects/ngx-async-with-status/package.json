@@ -13,6 +13,8 @@
   "sideEffects": false,
   "license": "MIT",
   "description": "Async pipe with status for Angular",
+  "repository": "thecoderdream/ngx-async-pipe-with-status",
+  "homepage": "https://github.com/TheCoderDream/ngx-async-pipe-with-status",
   "keywords": [
     "ng2",
     "ngx",

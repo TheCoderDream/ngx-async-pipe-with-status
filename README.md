@@ -23,9 +23,9 @@ supports Angular version 12.x and above.
 
 ## Setup
 
-1. Install the `AsyncWithStatusPipe` library:
-   ```bash
-   npm install ngx-async-with-status --save
+```bash
+npm install ngx-async-with-status --save
+````
 
 
 ## Usage
