@@ -99,6 +99,37 @@
           }
         }
       }
+    },
+    "ngx-async-with-status": {
+      "projectType": "library",
+      "root": "projects/ngx-mic-recorder",
+      "sourceRoot": "projects/ngx-async-with-status/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-async-with-status/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-async-with-status/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-async-with-status/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/karma.conf.js/src/test.ts",
+            "tsConfig": "projects/karma.conf.js/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-async-with-status/karma.conf.js"
+          }
+        }
+      }
     }
   }
 }
