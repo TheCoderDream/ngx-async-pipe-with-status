@@ -1,8 +1,18 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, startWith, map, catchError, of } from 'rxjs';
 
+function isNoData(value: unknown): boolean {
+  return value === null ||
+      value === undefined ||
+      value === '' ||
+      (Array.isArray(value) && value.length === 0) ||
+      (typeof value === 'object' && Object.keys(value).length === 0);
+}
+
 export interface RequestState<T> {
   readonly isLoading: boolean;
+  readonly noData: boolean;
+  readonly isLoaded: boolean;
   readonly value?: T;
   readonly error?: HttpErrorResponse | Error | unknown;
 }
@@ -25,12 +35,16 @@ export const loadingState = <T>(value?: T): LoadingState<T> => ({
   isLoading: true,
   value,
   error: undefined,
+  isLoaded: false,
+  noData: false,
 });
 
 export const loadedState = <T>(value?: T): LoadedState<T> => ({
   isLoading: false,
   error: undefined,
   value,
+  isLoaded: true,
+  noData: isNoData(value),
 });
 
 export const errorState = <T>(
@@ -40,6 +54,8 @@ export const errorState = <T>(
   isLoading: false,
   error,
   value,
+  isLoaded: false,
+  noData: false
 });
 export function requestStates<T>(): (
   source: Observable<HttpResponse<T> | T>

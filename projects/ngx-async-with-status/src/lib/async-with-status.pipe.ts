@@ -1,6 +1,5 @@
 import {
   ChangeDetectorRef,
-  inject,
   OnDestroy,
   Pipe,
   PipeTransform,

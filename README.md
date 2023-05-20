@@ -3,14 +3,14 @@
 The `AsyncWithStatusPipe` is an Angular pipe that provides additional functionality over the built-in `async` pipe. It allows you to handle and display the status of asynchronous data loading, such as loading state, error state, and loaded state, all within the template.
 
 ## Features
-* Provides explicit status handling for asynchronous data.
-* Allows displaying loading, error, and loaded states in the template.
-* Supports better control over change detection.
-* Full tested.
-* Handles multiple subscriptions to different observables.
-* Properly unsubscribes from the observable to avoid memory leaks.
 * Works seamlessly within Angular applications.
 * Improves the user experience by providing visual feedback during data loading and error states.
+* Provides explicit status handling for asynchronous data.
+* Allows displaying loading, error, no data, and loaded states in the template.
+* Supports better control over change detection.
+* Fully tested.
+* Handles multiple subscriptions to different observables.
+* Properly unsubscribes from the observable to avoid memory leaks.
 * Simplifies error handling by displaying relevant error messages to the user.
 * Ensures up-to-date rendering of the template with the latest data changes.
 
@@ -19,14 +19,13 @@ supports Angular version 12.x and above.
 
 | ngx-async-with-status | Angular |
 |-----------------------|---------|
-| 1.0.0                 | => 12.x |
+| 1.0.2                 | => 12.x |
 
 ## Setup
 
 ```bash
 npm install ngx-async-with-status --save
 ````
-
 
 ## Usage
 
@@ -63,13 +62,22 @@ class SomeComponent {
 <div *ngIf="data$ | asyncWithStatus as data">
   <div *ngIf="data.isLoading" class="loading">Loading...</div>
   <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
-  <div *ngIf="!data.isLoading && !data.error" class="loaded">
+  <div *ngIf="data.loaded" class="loaded">
     {{ data.value?.title }}
+  </div>
+  <div *ngIf="data.noData" class="noData">
+      No Data
   </div>
 </div>
 ````
 The asyncWithStatus pipe takes an observable as input and returns a RequestState object, which contains the current state of the asynchronous data.
-You can then use the properties of the RequestState object (isLoading, error, value) to handle and display the appropriate content in your template.
+You can then use the properties of the RequestState object (isLoading, error, noData, isLoaded, value) to handle and display the appropriate content in your template.
+
+## State Definitions
+* **error**: when observable throws error. It could be due to various reasons such as network issues, server errors, or invalid data. In this state, the application typically displays an error message or a fallback UI to notify the user about the problem.
+* **isLoading**: This state indicates that the application is currently fetching or loading data from a server or performing some asynchronous operation.
+* **isLoaded**: Data has been successfully loaded and ready for display.
+* **noData**:  null, undefined, empty array, object and string represent the absence of data.
 
 ## Advantages over built-in Angular async pipe
 ### The AsyncWithStatusPipe provides the following advantages over the Angular async pipe:
@@ -78,4 +86,8 @@ You can then use the properties of the RequestState object (isLoading, error, va
 
 * **Easier error handling**: The AsyncWithStatusPipe automatically catches errors thrown by the observable and includes the error details in the RequestState object. This simplifies error handling and allows you to display relevant error messages to the user.
 
-* **Better control over change** detection: By setting the pure option to false for the AsyncWithStatusPipe, change detection is automatically triggered whenever the asynchronous data state changes. This ensures that your template is always up to date with the latest data.
+* **Better control over change** detection: Change detection is only triggered whenever the asynchronous data state changes. This ensures that your template is always up to date with the latest data.
+
+## See more examples in stackblitz
+
+https://stackblitz.com/edit/ngx-async-with-status?file=src%2Fmain.ts
