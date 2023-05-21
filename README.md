@@ -97,19 +97,19 @@ class SomeComponent {
 
 ### Inputs
 * asyncWithStatus: Binds an observable value to the directive for tracking its state.
-*
+
 ## Structural Directives
 The following structural directives are used within the asyncWithStatus directive to conditionally render content based on the state of the observable.
 
-* isLoading: Renders the content when the observable is loading. Use this directive to display loading indicators or messages.
+* **isLoading**: Renders the content when the observable is loading. Use this directive to display loading indicators or messages.
 
-* isLoaded: Renders the content when the observable is successfully loaded. Use this directive to display the main content that should be shown when the data is available.
+* **isLoaded**: Renders the content when the observable is successfully loaded. Use this directive to display the main content that should be shown when the data is available.
 
-* error: Renders the content when an error occurs while loading the observable. Use this directive to display error messages or error handling UI.
+* **error**: Renders the content when an error occurs while loading the observable. Use this directive to display error messages or error handling UI.
 
-* isLoadedWithData: Renders the content when the observable is loaded with data. Use this directive to display content that requires access to the loaded data. You can access the data using the let-data directive syntax.
+* **isLoadedWithData**: Renders the content when the observable is loaded with data. Use this directive to display content that requires access to the loaded data. You can access the data using the let-data directive syntax.
 
-* isLoadedWithoutData: Renders the content when the observable is loaded without data. Use this
+* **isLoadedWithoutData**: Renders the content when the observable is loaded without data. Use this
 
 ## AsyncWithStatusPipe
 The `AsyncWithStatusPipe` is an Angular pipe that provides additional functionality over the built-in async pipe.

@@ -1,7 +1,7 @@
 # ngx-async-with-status
 
-The `ngx-async-with-status` library provides two powerful tools for handling and displaying the status of asynchronous data in Angular applications: 
-the `asyncWithStatus` directive and the `AsyncWithStatusPipe`. 
+The `ngx-async-with-status` library provides two powerful tools for handling and displaying the status of asynchronous data in Angular applications:
+the `asyncWithStatus` directive and the `AsyncWithStatusPipe`.
 These tools enable you to provide visual feedback to users during data loading and error states, and simplify error handling and state management in your templates.
 
 ## Features
@@ -46,11 +46,11 @@ export class YourModule { }
 ````
 
 ## asyncWithStatus Directive
-The `asyncWithStatus` directive is an Angular directive that tracks the state of an observable value and renders different structural directives based on its state. 
+The `asyncWithStatus` directive is an Angular directive that tracks the state of an observable value and renders different structural directives based on its state.
 It provides a convenient way to handle asynchronous operations and display loading indicators, success messages, error messages, and other relevant UI components.
 
 ## Usage
-To use the asyncWithStatus directive, add it as an attribute directive on an HTML element and bind an observable value to it. 
+To use the asyncWithStatus directive, add it as an attribute directive on an HTML element and bind an observable value to it.
 Then, use the structural directives provided by the asyncWithStatus directive to conditionally render content based on the state of the observable.
 
 ````ts
@@ -97,19 +97,19 @@ class SomeComponent {
 
 ### Inputs
 * asyncWithStatus: Binds an observable value to the directive for tracking its state.
-*
+
 ## Structural Directives
 The following structural directives are used within the asyncWithStatus directive to conditionally render content based on the state of the observable.
 
-* isLoading: Renders the content when the observable is loading. Use this directive to display loading indicators or messages.
+* **isLoading**: Renders the content when the observable is loading. Use this directive to display loading indicators or messages.
 
-* isLoaded: Renders the content when the observable is successfully loaded. Use this directive to display the main content that should be shown when the data is available.
+* **isLoaded**: Renders the content when the observable is successfully loaded. Use this directive to display the main content that should be shown when the data is available.
 
-* error: Renders the content when an error occurs while loading the observable. Use this directive to display error messages or error handling UI.
+* **error**: Renders the content when an error occurs while loading the observable. Use this directive to display error messages or error handling UI.
 
-* isLoadedWithData: Renders the content when the observable is loaded with data. Use this directive to display content that requires access to the loaded data. You can access the data using the let-data directive syntax.
+* **isLoadedWithData**: Renders the content when the observable is loaded with data. Use this directive to display content that requires access to the loaded data. You can access the data using the let-data directive syntax.
 
-* isLoadedWithoutData: Renders the content when the observable is loaded without data. Use this
+* **isLoadedWithoutData**: Renders the content when the observable is loaded without data. Use this
 
 ## AsyncWithStatusPipe
 The `AsyncWithStatusPipe` is an Angular pipe that provides additional functionality over the built-in async pipe.
@@ -118,25 +118,25 @@ It allows you to handle and display the status of asynchronous data loading, suc
 ## Usage
 
 Use the asyncWithStatus pipe in your template to handle and display the status of asynchronous data:
-The `AsyncWithStatusPipe` is an Angular pipe that provides additional functionality over the built-in `async` pipe. 
+The `AsyncWithStatusPipe` is an Angular pipe that provides additional functionality over the built-in `async` pipe.
 It allows you to handle and display the status of asynchronous data loading, such as loading state, error state, and loaded state, all within the template.
 ````ts
 @Component({
-  selector: 'some-component',
-  templateUrl: './some-component.component.html',
+    selector: 'some-component',
+    templateUrl: './some-component.component.html',
 })
 class SomeComponent {
-  public data$ = of({ title: 'test' }).pipe(delay(1000));
-  public emptyData$ = of([]).pipe(delay(1000));
+    public data$ = of({ title: 'test' }).pipe(delay(1000));
+    public emptyData$ = of([]).pipe(delay(1000));
 }
 ````
 ````html
 <div *ngIf="data$ | asyncWithStatus as data">
-  <div *ngIf="data.isLoading" class="loading">Loading...</div>
-  <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
-  <div *ngIf="data.loaded" class="loaded">
-    {{ data.value?.title }}
-  </div>
+    <div *ngIf="data.isLoading" class="loading">Loading...</div>
+    <div *ngIf="data.error" class="error">Error: {{ data.error?.message }}</div>
+    <div *ngIf="data.loaded" class="loaded">
+        {{ data.value?.title }}
+    </div>
 </div>
 ````
 
