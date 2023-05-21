@@ -13,6 +13,8 @@ export interface RequestState<T> {
   readonly isLoading: boolean;
   readonly noData: boolean;
   readonly isLoaded: boolean;
+  readonly isLoadedWithData: boolean;
+  readonly isLoadedWithoutData: boolean;
   readonly value?: T;
   readonly error?: HttpErrorResponse | Error | unknown;
 }
@@ -37,15 +39,22 @@ export const loadingState = <T>(value?: T): LoadingState<T> => ({
   error: undefined,
   isLoaded: false,
   noData: false,
+  isLoadedWithoutData: false,
+  isLoadedWithData: false,
 });
 
-export const loadedState = <T>(value?: T): LoadedState<T> => ({
-  isLoading: false,
-  error: undefined,
-  value,
-  isLoaded: true,
-  noData: isNoData(value),
-});
+export const loadedState = <T>(value?: T): LoadedState<T> => {
+  let noData = isNoData(value);
+  return {
+    isLoading: false,
+    error: undefined,
+    value,
+    isLoaded: true,
+    noData,
+    isLoadedWithData: !noData,
+    isLoadedWithoutData: noData,
+  }
+};
 
 export const errorState = <T>(
   error: HttpErrorResponse | Error | unknown,
@@ -55,7 +64,9 @@ export const errorState = <T>(
   error,
   value,
   isLoaded: false,
-  noData: false
+  noData: false,
+  isLoadedWithoutData: false,
+  isLoadedWithData: false,
 });
 export function requestStates<T>(): (
   source: Observable<HttpResponse<T> | T>
