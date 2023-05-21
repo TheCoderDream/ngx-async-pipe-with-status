@@ -1,6 +1,6 @@
 {
   "name": "ngx-async-with-status",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Emre Baskan",
   "email": "emrebaskan@mail.com",
   "peerDependencies": {

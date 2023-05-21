@@ -21,7 +21,7 @@ supports Angular version 12.x and above.
 
 | ngx-async-with-status | Angular |
 |-----------------------|---------|
-| 1.0.2                 | => 12.x |
+| 1.0.3                 | => 12.x |
 
 ## Installation
 
